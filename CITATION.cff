@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "Please cite the archived release DOI when available."
+title: "AAA–AS immune transcriptomics analysis code"
+type: software
+authors:
+  - family-names: Tang
+    given-names: Zeheng

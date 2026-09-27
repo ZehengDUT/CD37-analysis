@@ -1,0 +1,11 @@
+sample_id	disease_status	matrix_dir
+AAA1	AAA	data/restricted/matrices/AAA1
+AAA2	AAA	data/restricted/matrices/AAA2
+AAA3	AAA	data/restricted/matrices/AAA3
+AAA4	AAA	data/restricted/matrices/AAA4
+AAA5	AAA	data/restricted/matrices/AAA5
+AAA6	AAA	data/restricted/matrices/AAA6
+AAA7	AAA	data/restricted/matrices/AAA7
+CON1	Control	data/restricted/matrices/CON1
+CON2	Control	data/restricted/matrices/CON2
+CON3	Control	data/restricted/matrices/CON3

@@ -1,0 +1,15 @@
+# Input notes
+
+The scripts use gene-symbol expression matrices. The first column is `gene` (or `id`); each following column is one sample. `_con` denotes control and `_treat` denotes disease. `01_differential_expression.R` uses limma with adjusted P < 0.05 and absolute log2 fold change > 1. Running it on the supplied local AAA and AS matrices gave 263 and 441 genes, respectively.
+
+The 18 gene symbols in `config/candidate_genes.txt` come from the author's `inter/18Genes.txt`. WGCNA uses the manuscript's top 25% variable genes, outlier cut height 20,000, powers 15 (AAA) and 7 (AS), minimum module size 60, merge height 0.25, and absolute GS > 0.6 / MM > 0.8. The script records the observed scale-free fit so it can be checked against the claimed R² ≥ 0.90. Module selection may still need author review because the original source files do not identify a complete automatic module-selection rule.
+
+The feature-selection script uses 10-fold binomial LASSO with `alpha=1` and 5-fold SVM regression RFE evaluated by RMSE, as described in the manuscript. It reports selections separately for AAA and AS, then their shared intersection. The ANN and immune-correlation scripts require a verified five-gene shared output. They stop if the output differs. ANN scores use the median within each cohort, which follows the manuscript's per-gene median description but means a single future sample cannot be scored without a reference cohort.
+
+The CIBERSORTx workbook import is a format conversion only. It does not rerun the proprietary deconvolution tool. `05_immune_correlations.R` filters samples at P < 0.05 and calculates Spearman correlations with Benjamini-Hochberg correction.
+
+For AAA single-cell preprocessing, make a private copy of `config/aaa_samples.example.tsv` at `data/restricted/aaa_samples.tsv` and point it to the ten 10x matrix folders. Review quality cutoffs in `06_prepare_aaa_single_cell.R`; the current cutoffs are explicit working values because the manuscript did not provide numeric thresholds. Provide an empty or populated `data/restricted/doublet_cell_ids.txt` after doublet review. The script exports cluster markers. Cell annotations then require a private `data/restricted/aaa_cell_annotations.tsv` with columns `cell_id`, `major_cell_type`, and `macrophage_subtype`. Use the four macrophage subtype names shown in the README. Those decisions must be made from marker expression, not inferred from the existing major-type labels alone.
+
+The CellChat script analyzes AAA cells only, requires at least ten cells per retained group, and uses the human Secreted Signaling database. It exports interactions and requested pathway plots when the pathways are detected. Absence of a pathway in an output is recorded in `pathway_status.txt`.
+
+The manuscript's STRING PPI figure used a manual upload with human species and confidence score 0.4. To reproduce that figure, upload the 18 genes to [STRING](https://string-db.org/), record the STRING version and download the interaction table. The source materials do not contain the exported edge table, so this package does not claim to recreate that figure programmatically.
