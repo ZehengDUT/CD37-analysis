@@ -4,7 +4,7 @@ This repository contains newly written R code for the analyses described in the 
 
 ## Reproducibility status
 
-The code is runnable with the input formats described below. Exact numerical results should be checked against the final manuscript before archiving a release. Some AAA single-cell inputs are controlled-access under HRA011745 and must be obtained through the repository's access process.
+The code is runnable with the input formats described below. The corrected final AAA and AS machine-learning gene lists supplied by the authors are in `config/final_aaa_ml_genes.txt` and `config/final_as_ml_genes.txt`; their shared set is in `config/final_core_genes.txt`. `03_feature_selection.R` independently recalculates selection and reports any difference without overwriting the final lists. Exact numerical results should be checked against the final manuscript before archiving a release. Some AAA single-cell inputs are controlled-access under HRA011745 and must be obtained through the repository's access process.
 
 ## Public and controlled inputs
 
@@ -41,7 +41,7 @@ Rscript scripts/07_single_cell_expression.R
 Rscript scripts/99_session_info.R
 ```
 
-Each script has a short input contract and writes under `results/`, which Git excludes. Run the scripts in order. The ANN step requires a validation matrix and a resolved core-gene list. Immune correlations require a CIBERSORT or CIBERSORTx result table supplied separately. CellChat requires the controlled AAA Seurat object and author-verified macrophage annotations.
+Each script has a short input contract and writes under `results/`, which Git excludes. Run the scripts in order. ANN and immune correlations use the five genes in `config/final_core_genes.txt`. Immune correlations require a CIBERSORT or CIBERSORTx result table supplied separately. CellChat requires the controlled AAA Seurat object and author-verified macrophage annotations.
 
 The package intentionally stops with a clear error when required data, metadata, or a resolved gene list is missing. It does not manufacture placeholder results.
 

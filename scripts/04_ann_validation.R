@@ -1,9 +1,9 @@
 # Five-gene ANN with cohort-wise median scores and external validation.
 source(file.path("R", "common.R"))
 require_packages(c("neuralnet", "pROC"))
-genes <- read_gene_list(project_path("results", "features", "shared_core_genes.txt"))
+genes <- read_gene_list(project_path("config", "final_core_genes.txt"))
 if (length(genes) != 5L)
-  stop("ANN requires five genuinely selected shared genes. Current result has ", length(genes), ". Resolve feature-selection audit first.", call. = FALSE)
+  stop("ANN requires five genes in config/final_core_genes.txt", call. = FALSE)
 train <- read_expression(project_path("data", "processed", "aaa_expression.tsv"))
 test <- read_expression(project_path("data", "processed", "aaa_validation.tsv"))
 if (!all(genes %in% rownames(train)) || !all(genes %in% rownames(test))) stop("Core genes absent from training or validation matrix")

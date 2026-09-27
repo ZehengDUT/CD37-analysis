@@ -30,5 +30,10 @@ for (cohort in c("aaa", "as")) {
   message(cohort, ": LASSO ", length(lasso_genes), ", SVM-RFE ", length(svm_genes), ", intersection ", length(both))
 }
 shared <- intersect(selected$aaa, selected$as)
-writeLines(shared, project_path("results", "features", "shared_core_genes.txt"))
-message("Shared across AAA and AS: ", paste(shared, collapse = ", "))
+writeLines(shared, project_path("results", "features", "recomputed_shared_genes.txt"))
+final <- read_gene_list(project_path("config", "final_core_genes.txt"))
+comparison <- data.frame(gene = unique(c(shared, final)),
+                         recomputed = unique(c(shared, final)) %in% shared,
+                         final_reported = unique(c(shared, final)) %in% final)
+write_table(comparison, project_path("results", "features", "selection_comparison.tsv"))
+message("Recomputed shared genes: ", paste(shared, collapse = ", "))

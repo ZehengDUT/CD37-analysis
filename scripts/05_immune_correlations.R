@@ -12,8 +12,8 @@ for (cohort in c("aaa", "as")) {
   if (nrow(fractions) < 5) stop(cohort, ": fewer than five samples pass P<0.05")
   immune <- setdiff(names(fractions), c("sample", "P.value", "Correlation", "RMSE"))
   immune <- immune[vapply(fractions[immune], is.numeric, logical(1))]
-  genes <- read_gene_list(project_path("results", "features", "shared_core_genes.txt"))
-  if (length(genes) != 5L) stop("Immune correlation step requires five verified core genes")
+  genes <- read_gene_list(project_path("config", "final_core_genes.txt"))
+  if (length(genes) != 5L) stop("Immune correlation step requires five final core genes")
   genes <- intersect(genes, rownames(expr))
   grid <- expand.grid(gene = genes, cell_type = immune, stringsAsFactors = FALSE)
   grid$rho <- NA_real_; grid$p_value <- NA_real_; grid$n <- nrow(fractions)
