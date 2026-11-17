@@ -1,6 +1,6 @@
 # AAA–AS immune transcriptomics: reproducible analysis code
 
-This repository contains newly written R code for the analyses described in the accompanying PeerJ manuscript: differential expression, WGCNA, feature selection, diagnostic modelling, immune deconvolution, and AAA macrophage-centred CellChat analysis. The code is separate from patient-level data. It does **not** reproduce or redistribute the commercial course scripts found in the author's original working directories.
+This repository provides R analysis scripts, documentation, configuration files, and final feature-gene lists for investigating CD37 and shared immune-related features in abdominal aortic aneurysm (AAA) and atherosclerosis (AS). The workflow covers differential expression, WGCNA, feature selection, diagnostic modelling, immune deconvolution, and AAA macrophage-centred CellChat analysis. Patient-level data and third-party commercial scripts are not redistributed.
 
 ## Reproducibility status
 
@@ -53,4 +53,8 @@ The code uses R/Bioconductor packages cited in the manuscript. CIBERSORT source 
 
 ## Release and citation
 
-Once the final inputs and result audit agree with the manuscript, tag a GitHub release and archive it in Zenodo. Zenodo then assigns a version-specific DOI. Put the actual DOI, repository URL, and version in the manuscript Code Availability statement. A repository name need only be descriptive; `cd37-aaa-as-analysis` is suitable.
+The source repository is available at [ZehengDUT/CD37-analysis](https://github.com/ZehengDUT/CD37-analysis). Archived releases are preserved in Zenodo. Cite the version-specific DOI and release version corresponding to the archive used, together with the repository URL.
+
+An archived release is a fixed snapshot: later changes to this repository do not update an existing Zenodo archive. Updated source files must be archived as a new version before the corresponding archive DOI can be cited. Check numerical results against the study's reported results before using a release for exact replication.
+
+Neither this repository nor its code archives include the controlled-access single-cell sequencing data. Access to those data must be requested through [HRA011745](https://ngdc.cncb.ac.cn/gsa-human/browse/HRA011745).

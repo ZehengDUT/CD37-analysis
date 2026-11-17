@@ -1,7 +1,9 @@
 cff-version: 1.2.0
-message: "Please cite the archived release DOI when available."
+message: "Please cite the version-specific Zenodo DOI and release version corresponding to the archived code you used."
 title: "AAA–AS immune transcriptomics analysis code"
 type: software
+repository-code: "https://github.com/ZehengDUT/CD37-analysis"
+url: "https://github.com/ZehengDUT/CD37-analysis"
 authors:
   - family-names: Tang
     given-names: Zeheng
